@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('titles', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->float("rate_value");
-            $table->integer("rate_count");
-            $table->integer("year_start");
-            $table->integer("year_end");
-            $table->json("genres");
-            $table->text("poster");
+            $table->string("imdb_url")->unique();
+            $table->string("name")->nullable();
+            $table->float("rate_value")->nullable();
+            $table->integer("rate_count")->nullable();
+            $table->integer("year_start")->nullable();
+            $table->integer("year_end")->nullable();
+            $table->json("genres")->nullable();
+            $table->text("poster")->nullable();
             $table->timestamps();
         });
     }
