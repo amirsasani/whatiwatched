@@ -23,7 +23,7 @@ class TitleController extends Controller
      */
     public function index()
     {
-        $titles = Title::paginate();
+        $titles = Title::orderBy('rate_value', 'DESC')->orderBy('rate_count', 'DESC')->paginate();
         return view("dashboard", compact('titles'));
     }
 
