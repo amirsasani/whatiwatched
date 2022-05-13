@@ -9,7 +9,7 @@ class Title extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "rate_value", "rate_count", "year_start", "year_end", "genres", "poster"];
+    protected $fillable = ["imdb_url", "name", "rate_value", "rate_count", "year_start", "year_end", "genres", "poster"];
 
     protected $casts = [
         "genres" => "array"
@@ -17,7 +17,8 @@ class Title extends Model
 
     public function reviewServices()
     {
-        return $this->belongsToMany(ReviewService::class, 'title_review_service');
+        return $this->belongsToMany(ReviewService::class, 'title_review_service')
+            ->withPivot(['url', 'score', 'count']);
     }
 
     public function users()
