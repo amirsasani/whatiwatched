@@ -11,6 +11,7 @@ use App\Services\RottenTomatoesService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -42,7 +43,7 @@ class TitleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param TitlesRequest $request
-     * @return Application|Factory|View
+     * @return RedirectResponse
      */
     public function store(TitlesRequest $request)
     {
