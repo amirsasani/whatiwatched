@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('title_review_service', function (Blueprint $table) {
-            $table->foreignId("review_service")->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId("review_service_id")->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId("title_id")->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string("url");
+            $table->float("score")->nullable();
+            $table->integer("count")->nullable();
         });
     }
 
