@@ -15,6 +15,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
 
 class TitleController extends Controller
 {
@@ -34,9 +35,10 @@ class TitleController extends Controller
 
         $total_users = User::count();
         $total_titles = Title::count();
+        $min_rate = Title::min('rate_value');
+        $max_rate = Title::max('rate_value');
 
-
-        return view("dashboard", compact('titles', 'total_users', 'total_titles'));
+        return view("dashboard", compact('titles', 'total_users', 'total_titles', 'min_rate', 'max_rate'));
     }
 
     /**
