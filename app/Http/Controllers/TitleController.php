@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TitlesRequest;
 use App\Models\ReviewService;
 use App\Models\Title;
+use App\Models\User;
 use App\Services\ImdbService;
 use App\Services\MetacriticService;
 use App\Services\RottenTomatoesService;
@@ -30,7 +31,12 @@ class TitleController extends Controller
     public function index()
     {
         $titles = Title::orderBy('rate_value', 'DESC')->orderBy('rate_count', 'DESC')->paginate();
-        return view("dashboard", compact('titles'));
+
+        $total_users = User::count();
+        $total_titles = Title::count();
+
+
+        return view("dashboard", compact('titles', 'total_users', 'total_titles'));
     }
 
     /**

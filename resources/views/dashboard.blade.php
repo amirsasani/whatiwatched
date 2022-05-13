@@ -42,12 +42,12 @@
                 <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                 >
-                    Total clients
+                    Total users
                 </p>
                 <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                 >
-                    6389
+                    {{ number_format($total_users) }}
                 </p>
             </div>
         </div>
@@ -58,24 +58,20 @@
             <div
                 class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
             >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                        fill-rule="evenodd"
-                        d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                        clip-rule="evenodd"
-                    ></path>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path>
                 </svg>
             </div>
             <div>
                 <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                 >
-                    Account balance
+                    Total Titles
                 </p>
                 <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                 >
-                    $ 46,760.89
+                    {{ number_format($total_titles) }}
                 </p>
             </div>
         </div>
