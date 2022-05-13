@@ -106,11 +106,11 @@ class TitleController extends Controller
      * Display the specified resource.
      *
      * @param Title $title
-     * @return Response
+     * @return Application|Factory|View
      */
     public function show(Title $title)
     {
-        //
+        return view('titles.show', compact('title'));
     }
 
     /**
