@@ -17,8 +17,8 @@ class ImdbService extends BaseService
 
         $this->dom = new Crawler($response->body());
 
-        $this->json_ld = $this->dom->filter("script[type='application/ld+json']")->text();
-        $this->json_ld = json_decode($this->json_ld, true);
+        preg_match('#<script type="application/ld\+json">(.+?)</script>#ims', $response->body(), $matches);
+        $this->json_ld = json_decode($matches[1], true);
 
         $imdb_id = $this->getId();
         $poster = $this->getPoster();
