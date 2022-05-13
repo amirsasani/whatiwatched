@@ -3,7 +3,7 @@
         <div class="flex ">
             <img style="max-height: 25rem" class="mr-6" src="{{ $title->poster }}" alt="{{ $title->name }}">
             <div class="w-full">
-                <ul class="text-white">
+                <ul class="dark:text-white">
                     <li class="flex items-center justify-between">
                         <h1 class="leading-5">{{ $title->name }}</h1>
                         <a href="{{ $title->imdb_url }}" target="_blank" class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
