@@ -15,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name("home");
+Route::get('/', [\App\Http\Controllers\TitleController::class, "index"])->name("index");
+Route::get('/home', [\App\Http\Controllers\TitleController::class, "index"])->name("home");
+Route::get('/dashboard', [\App\Http\Controllers\TitleController::class, "index"])->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::resource('titles', \App\Http\Controllers\TitleController::class);
