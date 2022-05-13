@@ -17,6 +17,11 @@ use Illuminate\Http\Response;
 
 class TitleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['store']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -83,6 +88,8 @@ class TitleController extends Controller
                 'count' => $metacritic_data['reviews'],
             ]
         ]);
+
+        $title->users()->syncWithoutDetaching(auth()->user());
 
         return redirect()->route('home');
     }
