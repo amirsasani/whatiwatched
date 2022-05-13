@@ -83,7 +83,7 @@ class TitleController extends Controller
             ]
         ]);
 
-        return view("dashboard");
+        return redirect()->route('home');
     }
 
     /**
