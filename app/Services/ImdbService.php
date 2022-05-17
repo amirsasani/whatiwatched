@@ -69,8 +69,10 @@ class ImdbService extends BaseService
             "/(.*) \((.*)(\d{4}|\?{4}).*\)(.*)/"
         ];
 
+        $x = [];
         foreach ($regexes as $regex) {
             preg_match_all($regex, $title, $x);
+            $x = Arr::flatten($x);
             if (!empty($x))
                 break;
         }
