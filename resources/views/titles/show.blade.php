@@ -54,7 +54,7 @@
                             </a>
                             @if($reviewService->pivot->count)
                                 <p class="text-xs text-gray-600 dark:text-gray-400">
-                                    From {{number_format($reviewService->pivot->count)}} votes
+                                    From {{number_format($reviewService->pivot->count)}} reviews
                                 </p>
                             @endif
                         </li>

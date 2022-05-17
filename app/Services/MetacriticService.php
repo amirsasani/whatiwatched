@@ -2,20 +2,17 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Symfony\Component\DomCrawler\Crawler;
 
 class MetacriticService extends BaseService
 {
-    private $dom;
+    private $json_ld;
 
     public function fetch()
     {
         $response = $this->client()->get($this->url);
 
-        $this->dom = new Crawler($response->body());
-
+        preg_match('#<script type="application/ld\+json">(.+?)</script>#ims', $response->body(), $matches);
+        $this->json_ld = json_decode($matches[1], true);
 
         $score = $this->getScore();
         $reviews = $this->getReviews();
@@ -26,15 +23,14 @@ class MetacriticService extends BaseService
 
     public function getScore()
     {
-        $score = $this->dom->filter(".metascore_w.larger.tvshow.positive")->text();
+        $score = $this->json_ld['aggregateRating']['ratingValue'];
 
         return intval($score);
     }
 
     public function getReviews()
     {
-        $reviews = $this->dom->filter(".score_details .score_description .based_on")->text();
-        $reviews = filter_var($reviews, FILTER_SANITIZE_NUMBER_INT);
+        $reviews = $this->json_ld['aggregateRating']['ratingCount'];
 
         return intval($reviews);
     }

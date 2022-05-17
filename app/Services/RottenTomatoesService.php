@@ -2,31 +2,34 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Symfony\Component\DomCrawler\Crawler;
 
 class RottenTomatoesService extends BaseService
 {
-    private $dom;
+    private $json_ld;
 
     public function fetch()
     {
         $response = $this->client()->get($this->url);
 
-        $this->dom = new Crawler($response->body());
-
+        preg_match('#<script type="application/ld\+json">(.+?)</script>#ims', $response->body(), $matches);
+        $this->json_ld = json_decode($matches[1], true);
 
         $score = $this->getScore();
+        $reviews = $this->getReviews();
 
-
-        return compact('score');
+        return compact('score', 'reviews');
     }
 
     public function getScore()
     {
-        $score = $this->dom->filter(".score-panel-wrap .critic-score .mop-ratings-wrap__percentage")->text();
-
+        $score = $this->json_ld['aggregateRating']['ratingValue'];
         return intval($score);
+    }
+
+    public function getReviews()
+    {
+        $reviews = $this->json_ld['aggregateRating']['ratingCount'];
+
+        return intval($reviews);
     }
 }
