@@ -114,6 +114,17 @@ class TitleController extends Controller
     }
 
     /**
+     * Display title's poster.
+     *
+     * @param Title $title
+     * @return Application|Factory|View
+     */
+    public function poster(Title $title)
+    {
+        return view('titles.show', compact('title'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param Title $title

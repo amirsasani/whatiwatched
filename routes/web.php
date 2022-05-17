@@ -19,4 +19,5 @@ Route::get('/', [\App\Http\Controllers\TitleController::class, "index"])->name("
 Route::get('/home', [\App\Http\Controllers\TitleController::class, "index"])->name("home");
 Route::get('/dashboard', [\App\Http\Controllers\TitleController::class, "index"])->middleware(['auth'])->name('dashboard');
 
+Route::get('titles/{title}/poster', [\App\Http\Controllers\TitleController::class, 'poster'])->name('titles.poster');
 Route::resource('titles', \App\Http\Controllers\TitleController::class);
