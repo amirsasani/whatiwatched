@@ -87,11 +87,11 @@ class TitleController extends Controller
 
         $title->reviewServices()->sync([
             1 => [
-                'url' => $metacritic_url,
+                'url' => $rottent_tomatoes_url,
                 'score' => $rotten_tomatoes_data['score']
             ],
             2 => [
-                'url' => $rottent_tomatoes_url,
+                'url' => $metacritic_url,
                 'score' => $metacritic_data['score'],
                 'count' => $metacritic_data['reviews'],
             ]
