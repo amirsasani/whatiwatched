@@ -64,20 +64,19 @@ class PosterService
         $segments_data[] = ['img' => "assets/imgs/calendar.png", 'text' => $msg];
 
 
+        # Rotten Tomatoes
+        $rotten_tomatoes = $this->title->reviewServices()->find(1);
+        $score = $rotten_tomatoes->pivot->score;
+        $total = $rotten_tomatoes->pivot->count;
+        $msg = sprintf("امتیاز %d از %d نقد\nسایت Tomatoes Rotten", $score, $total);
+        $segments_data[] = ['img' => "assets/imgs/rotten-tomatoes-logo.png", 'text' => $msg];
+
         # Metacritic
         $metacritic = $this->title->reviewServices()->find(2);
         $score = $metacritic->pivot->score;
         $total = $metacritic->pivot->count;
         $msg = sprintf("امتیاز %d از %d نقد\nدر سایت Metacritic", $score, $total);
         $segments_data[] = ['img' => "assets/imgs/metacritic-logo.png", 'text' => $msg];
-
-
-        # Rotten Tomatoes
-        $rotten_tomatoes = $this->title->reviewServices()->find(2);
-        $score = $rotten_tomatoes->pivot->score;
-        $total = $rotten_tomatoes->pivot->count;
-        $msg = sprintf("امتیاز %d از %d نقد\nسایت Tomatoes Rotten", $score, $total);
-        $segments_data[] = ['img' => "assets/imgs/rotten-tomatoes-logo.png", 'text' => $msg];
 
 
         $segments_data_count = count($segments_data);
