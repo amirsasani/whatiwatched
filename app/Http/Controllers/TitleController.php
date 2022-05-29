@@ -8,6 +8,7 @@ use App\Models\Title;
 use App\Models\User;
 use App\Services\ImdbService;
 use App\Services\MetacriticService;
+use App\Services\Poster\PosterService;
 use App\Services\RottenTomatoesService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -15,13 +16,15 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Arr;
 
 class TitleController extends Controller
 {
-    public function __construct()
+    private PosterService $posterService;
+
+    public function __construct(PosterService $posterService)
     {
         $this->middleware('auth')->only(['store']);
+        $this->posterService = $posterService;
     }
 
     /**
@@ -122,7 +125,10 @@ class TitleController extends Controller
      */
     public function poster(Title $title)
     {
-        return view('titles.show', compact('title'));
+        $this->posterService->setTitle($title);
+        $poster = $this->posterService->make();
+
+        return $poster->response('png');
     }
 
     /**

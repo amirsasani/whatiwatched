@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00d4c52ae9fb80d10c20b6493eedc3c8",
+    "content-hash": "d2f3a4315ac686ab415dc7fbf9b46020",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1147,6 +1147,55 @@
                 }
             ],
             "time": "2021-10-11T09:18:27+00:00"
+        },
+        {
+            "name": "eskandari/persianrender",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mahmoud-eskandari/PersianRender.git",
+                "reference": "3ff1bdbd12916ac8480654ed60d28714dc5c05fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mahmoud-eskandari/PersianRender/zipball/3ff1bdbd12916ac8480654ed60d28714dc5c05fa",
+                "reference": "3ff1bdbd12916ac8480654ed60d28714dc5c05fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PersianRender\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU"
+            ],
+            "authors": [
+                {
+                    "name": "Mahmoud Eskandari",
+                    "email": "info@webafrooz.com"
+                }
+            ],
+            "description": "PersianRender,Free persian letter conertor for using in php GD, etc.",
+            "homepage": "http://webafrooz.com",
+            "keywords": [
+                "gd",
+                "image",
+                "persian",
+                "persianletter",
+                "render",
+                "text"
+            ],
+            "support": {
+                "issues": "https://github.com/mahmoud-eskandari/PersianRender/issues",
+                "source": "https://github.com/mahmoud-eskandari/PersianRender/tree/0.1"
+            },
+            "time": "2017-08-18T20:33:14+00:00"
         },
         {
             "name": "fruitcake/php-cors",
