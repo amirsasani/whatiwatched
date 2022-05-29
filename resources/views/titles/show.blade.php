@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="mt-4 px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <div class="flex ">
-            <img style="max-height: 25rem" class="mr-6" src="{{ $title->poster }}" alt="{{ $title->name }}">
+        <div class="flex flex-col">
+            <img style="max-height: 25rem; align-self: center;" src="{{ $title->poster }}" alt="{{ $title->name }}">
             <div class="w-full">
                 <ul class="dark:text-white">
                     <li class="flex items-center justify-between">
