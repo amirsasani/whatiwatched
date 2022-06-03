@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
 
+Route::get('redirect/{driver}', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider']);
+Route::get('{driver}/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback']);
+
 Route::get('/', [\App\Http\Controllers\TitleController::class, "index"])->name("index");
 Route::get('/home', [\App\Http\Controllers\TitleController::class, "index"])->name("home");
 Route::get('/dashboard', [\App\Http\Controllers\TitleController::class, "index"])->middleware(['auth'])->name('dashboard');
