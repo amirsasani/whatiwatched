@@ -6,10 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function redirectToProvider($driver)
     {
         return Socialite::driver($driver)->redirect();
@@ -33,6 +40,7 @@ class LoginController extends Controller
             $newUser->provider_id = $user->getId();
             $newUser->name = $user->getName();
             $newUser->email = $user->getEmail();
+            $newUser->password = Hash::make(Str::random());
             // we set email_verified_at because the user's email is already verified by social login portal
             $newUser->email_verified_at = now();
             $newUser->save();
