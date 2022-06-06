@@ -5,6 +5,18 @@
         Dashboard
     </h2>
     <!-- CTA -->
+
+    @if(!auth()->check())
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <div id="g_id_onload"
+             data-client_id="{{ config('services.google.client_id') }}"
+             data-login_uri="{{ route('auth.social.login', ['driver' => 'google']) }}"
+             data-_token="{{ csrf_token() }}"
+             data-cancel_on_tap_outside="false"
+             data-auto_prompt="true">
+        </div>
+    @endif
+
     <a
         class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
         href="https://github.com/amirsasani/whatiwatched"

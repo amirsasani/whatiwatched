@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
 
-Route::get('redirect/{driver}', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider'])->name('auth.redirect');
-Route::get('{driver}/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback'])->name('auth.callback');
+Route::get('redirect/{driver}', [\App\Http\Controllers\Auth\SocialLoginController::class, 'redirect'])->name('auth.social.redirect');
+Route::get('{driver}/callback', [\App\Http\Controllers\Auth\SocialLoginController::class, 'callback'])->name('auth.social.callback');
+Route::any('{driver}/login', [\App\Http\Controllers\Auth\SocialLoginController::class, 'login'])->name('auth.social.login');
 
 Route::get('/', [\App\Http\Controllers\TitleController::class, "index"])->name("index");
 Route::get('/home', [\App\Http\Controllers\TitleController::class, "index"])->name("home");
