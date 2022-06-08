@@ -193,7 +193,8 @@
                     </svg>
                 </button>
                 <!-- Search input -->
-                <div class="flex justify-center flex-1 lg:mr-32">
+                <form class="flex justify-center flex-1 lg:mr-32" action="{{ route('titles.search') }}" method="post">
+                    @csrf
                     <div
                         class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
                     >
@@ -214,11 +215,12 @@
                         <input
                             class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
                             type="text"
+                            name="q"
                             placeholder="Search for Titles"
                             aria-label="Search"
                         />
                     </div>
-                </div>
+                </form>
                 <ul class="flex items-center flex-shrink-0 space-x-6">
                     <!-- Theme toggler -->
                     <li class="flex">

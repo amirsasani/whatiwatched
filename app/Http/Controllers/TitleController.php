@@ -16,6 +16,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Artisan;
 
 class TitleController extends Controller
 {
@@ -42,6 +43,31 @@ class TitleController extends Controller
         $max_rate = Title::max('rate_value');
 
         return view("dashboard", compact('titles', 'total_users', 'total_titles', 'min_rate', 'max_rate'));
+    }
+
+    /**
+     * Search in Titles
+     *
+     * @param Request $request
+     * @return Application|Factory|View
+     */
+    public function search(Request $request)
+    {
+        $q = $request->q;
+
+        $titles = Title::orderBy('rate_value', 'DESC')
+            ->whereRaw('LOWER(`name`) LIKE ? ',['%'.trim(strtolower($q)).'%'])
+            ->orWhereRaw('LOWER(`imdb_url`) LIKE ? ',['%'.trim(strtolower($q)).'%'])
+            ->orWhereRaw('LOWER(`slug`) LIKE ? ',['%'.trim(strtolower($q)).'%'])
+            ->paginate();
+
+
+        $total_users = User::count();
+        $total_titles = Title::count();
+        $min_rate = Title::min('rate_value');
+        $max_rate = Title::max('rate_value');
+
+        return view("titles.search", compact('titles', 'q'));
     }
 
     /**

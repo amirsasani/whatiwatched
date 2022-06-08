@@ -25,3 +25,5 @@ Route::get('/dashboard', [\App\Http\Controllers\TitleController::class, "index"]
 
 Route::get('titles/{title}/poster', [\App\Http\Controllers\TitleController::class, 'poster'])->name('titles.poster');
 Route::resource('titles', \App\Http\Controllers\TitleController::class);
+
+Route::post('/search', [\App\Http\Controllers\TitleController::class, "search"])->name('titles.search');
