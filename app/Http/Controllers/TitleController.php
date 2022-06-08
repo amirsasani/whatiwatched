@@ -129,6 +129,8 @@ class TitleController extends Controller
 
         $title->users()->syncWithoutDetaching(auth()->user());
 
+        $title = $title->replicate();
+
         return redirect()->route('home');
     }
 
